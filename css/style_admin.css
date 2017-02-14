@@ -1,0 +1,419 @@
+/* Componentes Padroes BEGIN */
+
+* {
+	margin: 0;
+	padding: 0;
+        border: 0;
+        font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+        font-size: 16px;
+}
+
+label {
+	font-size: 18px;
+	color: #000000;
+	text-shadow: 0px 1px 0px #fff;
+	display: block;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+input[type="text"], input[type="button"], input[type="submit"], input[type="password"], textarea {
+    display: block;
+}
+
+input[type="text"], input[type="button"], input[type="submit"], input[type="password"], textarea, select {
+        height: 27px;
+        width: 365px;
+        -webkit-border-radius: 3px;  
+        -moz-border-radius: 3px;  
+        border-radius: 3px;
+        border: 0px solid #FFFFFF;
+        outline: none;
+        text-shadow: 0px 1px 0px #fff;
+        background: -webkit-gradient(linear, left top, left bottombottom, from(#94C9F7), to(#ffffff));  
+        background: -moz-linear-gradient(top,  #FEF1EC  #ffffff);
+        -webkit-box-shadow: 1px 1px 0px #0069C4;  
+        -moz-box-shadow: 1px 1px 0px #0069C4;  
+        box-shadow:  1px 1px 0px #0069C4;
+        margin-left: 15px;
+}
+    
+textarea {
+        height: 85px;
+}
+
+input[type="button"]{
+    height: 40px;
+    width: 200px;
+    display: inline;
+    margin-top: 10px;
+    
+}
+
+input[type="submit"] {
+        height: 40px;
+        width: 200px;
+        font-size: 13px;
+        text-transform: uppercase;
+        margin: 10px auto;
+        color: #429DED;
+}
+
+input[type="checkbox"], input[type="radio"] {
+        display: inline;
+        height: 20px;
+        width: 20px;
+        margin-left: 15px;
+}
+
+table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+}
+table td, table th {
+        border: solid 1px black;
+        padding: 2px;
+        margin:  0;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 13px;
+}
+
+/* Componentes Padroes END */
+
+/* Classes Comuns */
+.atualizar, .excluir {
+        margin-top: 5px;
+        width: 25px;
+        height: 25px;
+}
+
+/* Menu Administrador */
+#menu_main {
+	background-color: #0069C4;
+	height: 40px;
+	width: 100%;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+}
+
+#menu_main ul {
+	background-color: #0069C4;
+	list-style: none;
+	height: 0;
+}
+
+#menu_main > ul {
+	width: 760px;
+	margin: 0 auto;
+	height: 40px;
+}
+
+#menu_main ul li {
+	float: left;
+	width: 120px;
+	height: 26px;
+	padding: 7px 0;
+	text-align: center;
+	color: white;
+	position: relative;
+}
+
+#menu_main li:hover {
+	background-color: #429DED;
+	color: white;
+	z-index: 9999;
+}
+
+#menu_main ul li[id="bt_sair"] {
+	width: 40px;
+	height: 33px;
+	padding-top: 0;
+}
+
+#menu_main li > ul {
+	display: none;
+	position: absolute;
+	top: 40px;
+	left: 0;
+}
+
+#menu_main li:hover > ul {
+	display: block;
+}
+
+#menu_main li > ul li {
+	width: 220px;
+	background-color: #0069C4;
+}
+
+#menu_main ul li[class="divisor"] {
+	height: 1px;
+	padding: 0px;
+	background-color: white;
+	width: 220px;
+}
+
+/* Corpo Principal */
+#corpo_principal {
+	position: relative;
+	top: 40px;
+	background-color: #94C9F7;
+	width: 750px;
+	margin: 0 auto;
+	padding: 5px 5px;
+}
+
+/* Bottom  */
+#bottom {
+	background-color: #0069C4;
+	height: 130px;
+	position: relative;
+	top: 40px;
+}
+
+#bottom div {
+	background-image: url(../admin/images/logo.png);
+	background-repeat: no-repeat;
+	background-position: 650px 5px;
+	height: 130px;
+	width: 760px;
+	margin: auto auto;
+	position: relative;
+}
+
+#bottom div span {
+	font-size: 12px;
+	color: white;
+	display: block;
+	position: absolute;
+	top: 105px;
+	left: 230px;
+}
+
+/* Add User */
+#seletor_tipo_user {
+        width: 680px;
+        margin: 0 auto;
+}
+#seletor_tipo_user label {
+        display: inline;
+        margin-left: 0;
+}
+/* User e Local User */
+.botoes_tabela {
+        width: 57px;
+}
+.box_local {
+        width: 400px;
+        margin: 2px auto;
+        border: 1px solid black;
+}
+#lista_local {
+    width: 400px;
+    margin: 0 auto;
+}
+#busca_users {
+        padding: 10px;
+}
+#busca_users input, #busca_users label {
+    display: inline;
+    padding: 3px;
+    margin: 2px;
+}
+
+#busca_users select, #busca_users input{
+        width: 200px;
+}
+
+#busca_users input[type="submit"] {
+    width: 100px;
+}
+
+/* Informações e subeventos */
+#logo_image_view {
+    width: 200px;
+    float: left;
+}
+
+#logo_botoes{
+    width: 488px;
+    float: right;
+}
+
+.info_campo_entrada {
+    width: 720px;
+    margin-bottom: 5px;
+}
+
+#info_titulo, #titulo_subev, #titulo_acon {
+    width: 720px;
+}
+
+.info_logo {
+    border-color: black;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+.info_form {
+    border: 1px solid black;
+    margin: 2px 15px;
+    padding: 15px;
+}
+
+#sis_banner div {
+    float: left;
+    width: 340px;
+}
+
+#info_banner {
+    height: 105px;
+    margin: 5px;
+    border-color: black;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+#info_banner_exlcuir {
+    width: 10px;
+}
+
+#info_campo_salvar {
+    float: right;
+    margin-right:15px;
+}
+
+#tabela_mais_links {
+    width: 300px;
+    float: left;
+}
+
+#formulario_mais_links {
+    width: 382px;
+    float:right;
+}
+#formulario_mais_links input[type="file"] {
+    margin-left: 15px;
+}
+
+#botao_gerenciar {
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+/*** PLATAFORMA 1 ***/
+
+#gen_professores {
+    float: left;
+}
+
+#add_spacetime input {
+    width: 85px;
+    margin: 0;
+}
+
+#add_spacetime select {
+    width: 374px;
+    margin: 0;
+}
+
+#busca_acon input, #busca_acon label {
+    display: inline;
+    margin: 6px;
+}
+
+#input_busca_acon {
+    width: 400px;
+}
+
+.caixa_less_border {
+    margin: 2px 15px;
+    padding: 15px;
+}
+
+#lista_acontecimentos thead #botoes_do_acont {
+    width: 60px;
+}
+
+#lista_acontecimentos tbody .bttool {
+    margin: 2px;
+}
+
+.espera_ajax {
+    margin: 0 auto;
+    width: 330px;
+}
+.espera_ajax span {
+    padding: 5px 5px;
+    display: block;
+    float: left;
+    font-weight: bold;
+}
+
+.espera_ajax img {
+    float: left;
+}
+
+#botao_more_prof {
+    display: block;
+    float: left;
+    margin-left: 6px;
+}
+
+#botao_less_prof {
+    display: block;
+    float: left;
+    margin-left: 6px;
+}
+
+#acontecimentos_prof div {
+    height: 27px;
+    margin: 5px 0;
+}
+
+#acontecimentos_prof div span {
+    display: block;
+    float: left;
+}
+
+#acontecimentos_prof div img {
+    display: block;
+    float: left;
+    margin-left: 6px;
+}
+
+#modelcert {
+    background-size: 100%;
+    margin: 10px 0;
+    border: 1px dashed black;
+    width: 745px;
+    height: 560px;
+    display: block;
+    position: relative;
+}
+
+#dadosmodel {
+    border: 1px solid black;
+    padding: 25px;
+    position: absolute;
+    left: 25px;
+    top:200px;
+    width: 635px;
+    height: 180px;
+}
+#dadosmodel span {
+    font-size: 20px;
+}
+
+#dadosmodel .campo-cert-model {
+    color:#cd0a0a;
+}
+
+#cores-theme div {
+    float: left;
+    border: 0px solid black;
+    padding: 5px;
+}

@@ -1,0 +1,1 @@
+<?php$link1 = mysql_connect('localhost','root','');mysql_selectdb('midata');?>

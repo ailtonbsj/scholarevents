@@ -1,0 +1,674 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/02/2014, 09:31:46
+    Author     : My Windows
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: 0;
+}
+
+/* Menu Principal Home */
+#menu_main {
+	height: 40px;
+	background-color: #FEF1EC;
+}
+#menu_main ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+        z-index: 999;
+}
+#menu_main > ul {
+	height: 40px;
+	width: 760px;
+	margin: 0 auto;
+}
+#menu_main  li > ul li {
+	width: 220px;
+	text-align: left;
+	padding-left: 10px;
+}
+#menu_main li {
+	width: 126px;
+	height: 26px;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	padding: 7px 0;
+	background-color: #66aa00;
+	color: white;
+	text-align: center;
+	position: relative;
+	float: left;
+}
+#menu_main li:hover {
+	background-color: #ff1100;
+	color: white;
+}
+#menu_main li > ul {
+	position: absolute;
+	left: 0px;
+	top: 40px;
+	color: black;
+	display: none;
+}
+#menu_main li:hover > ul {
+	display: block;
+}
+
+/* Topo - Logo e Titulo Principal Home */
+#topo {
+	width: 760px;
+	height: 140px;
+	background-color: #CFE4A1;
+	background-repeat: no-repeat;
+	background-position: 10px 10px;
+	margin: 0 auto;
+}
+#titulo_main {
+	margin-left: 160px;
+	padding: 26px 10px;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 30px;
+	color: #66aa00;
+	font-weight: bolder;
+	text-transform: none;
+}
+
+/* Bottom Home */
+#bottom {
+	background-color: #66AA00;
+	height: 130px;
+}
+#bottom div {
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+	background-position: 650px 5px;
+	height: 130px;
+	width: 760px;
+	margin: auto auto;
+	position: relative;
+}
+#bottom div span {
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 12px;
+	color: white;
+	display: block;
+	position: absolute;
+	top: 105px;
+	left: 230px;
+}
+
+/* Corpo Principal Home */
+#corpo_principal {
+	background-color: #CFE4A1;
+	width: 750px;
+	margin: 0 auto;
+	padding: 5px 5px;
+}
+
+/* Banner Rotativo Home */
+#banner_rotativo {
+	width: 550px;
+	float: left;
+}
+
+/* Login do Sistema Home */
+#login_area {
+	background-color: #66AA00;
+	width: 170px;
+	height: 150px;
+	padding: 10px;
+	float: right;
+	-webkit-border-radius: 6px;  
+    -moz-border-radius: 6px;  
+    border-radius: 6px;	
+}
+
+#login_area > span {
+	text-align: center;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+        font-size: 13px;
+        padding: 0;
+	color:#FFFFFF;
+	font-weight: bolder;
+	display: block;
+}
+
+#login_area > a {
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+        font-size: 13px;
+        padding: 0;
+        margin-top: 6px;
+	color:#FFFFFF;
+	font-weight: bolder;
+	display: block;
+}
+
+#login_area label {
+	display: block;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 13px;
+	color: white;
+}
+
+#login_area input {
+	height: 23px;
+	display: block;
+	width: 165px;
+	-webkit-border-radius: 3px;  
+    -moz-border-radius: 3px;  
+    border-radius: 3px;
+	border: 0px solid #FFFFFF;
+	outline: none;
+	text-shadow: 0px 1px 0px #fff;
+	background: -webkit-gradient(linear, left top, left bottom bottom, from(#CFE4A1), to(#ffffff));  
+    background: -moz-linear-gradient(top,  #CFE4A1,  #ffffff);
+    -webkit-box-shadow: 1px 1px 0px #efefef;  
+    -moz-box-shadow: 1px 1px 0px #efefef;  
+    box-shadow:  1px 1px 0px #efefef;
+}
+
+#login_area input:focus {
+-webkit-box-shadow: 0px 0px 5px #FF1100;  
+    -moz-box-shadow: 0px 0px 5px #FF1100;  
+    box-shadow: 0px 0px 5px #FF1100;
+}
+
+#login_area input[type="submit"] {
+	margin-top: 6px; 
+}
+
+/* Imagens do Subevento Home */
+#subeventos ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#subeventos ul li {
+	padding: 0px;
+	float: left;
+	margin: 0 15px;
+	margin-top: 5px;
+	-webkit-box-shadow: 0px 0px 6px #66AA00;  
+    -moz-box-shadow: 0px 0px 6px #66AA00;  
+    box-shadow: 0px 0px 6px #66AA00;
+}
+#subeventos ul li:hover {
+	-webkit-box-shadow: 0px 0px 6px #FF1100;  
+    -moz-box-shadow: 0px 0px 6px #FF1100;  
+    box-shadow: 0px 0px 6px #FF1100;
+}
+
+/* Sobre o evento Home */
+#sobre_evento {
+	margin-top: 5px;
+	width: 500px;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 14px;
+	text-align: justify;
+	color: #005500;
+        float: left;
+}
+
+#area_html_1 {
+    margin-top: 5px;
+    width: 245px;
+    float: right;
+}
+
+/* Titulo */
+h1 {
+	padding: 2px 10px;
+	color: white;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 17px;
+	font-weight: bolder;
+	background-color: #66AA00;
+}
+
+/* Pagina Manutencao */
+#bloco_manu {
+	background-image: url(../images/manutencao.jpg);
+	background-repeat: no-repeat;
+	background-position: 220px 60px;
+	background-color: #CFE4A1;
+	width: 760px;
+	height: 600px;
+	margin: 0 auto;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 24px;
+	text-align: center;
+}
+
+#login_area_manu {
+	margin: 0 auto;
+	margin-top: 320px;
+	background-color: #66AA00;
+	width: 170px;
+	height: 150px;
+	padding: 10px;
+	-webkit-border-radius: 6px;  
+    -moz-border-radius: 6px;  
+    border-radius: 6px;	
+}
+
+#login_area_manu > span {
+	text-align: center;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 14px;
+	color:#FFFFFF;
+	font-weight: bolder;
+	display: block;
+}
+
+#login_area_manu label {
+	display: block;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 13px;
+	color: white;
+}
+
+#login_area_manu input {
+	height: 27px;
+	display: block;
+	width: 165px;
+	-webkit-border-radius: 3px;  
+    -moz-border-radius: 3px;  
+    border-radius: 3px;
+	border: 0px solid #FFFFFF;
+	outline: none;
+	text-shadow: 0px 1px 0px #fff;
+	background: -webkit-gradient(linear, left top, left bottombottom, from(#CFE4A1), to(#ffffff));  
+    background: -moz-linear-gradient(top,  #CFE4A1,  #ffffff);
+     -webkit-box-shadow: 1px 1px 0px #efefef;  
+    -moz-box-shadow: 1px 1px 0px #efefef;  
+    box-shadow:  1px 1px 0px #efefef;
+}
+
+#login_area_manu input:focus {
+-webkit-box-shadow: 0px 0px 5px #FF1100;  
+    -moz-box-shadow: 0px 0px 5px #FF1100;  
+    box-shadow: 0px 0px 5px #FF1100;
+}
+
+#login_area_manu input[type="submit"] {
+	margin-top: 6px; 
+}
+
+#sobre_subevento {
+	margin-top: 5px;
+        width: 100%;
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;;
+	font-size: 14px;
+	text-align: justify;
+	color: #005500;
+        float: left;
+}
+#sobre_subevento img {
+    display: block;
+    margin: 5px auto;
+}
+
+#lista_anexos {
+    margin: 5px 20px;
+}
+
+#lista_anexos li {
+    margin: 15px 0;
+}
+
+.titulos_download {
+    font-weight: bold;
+    margin: 15px 8px;
+}
+
+.items_download {
+    margin: 5px 40px;
+}
+
+/* Inscrição Online */
+#inscricaoonline > * {
+	margin: 0;
+	padding: 0;
+        border: 0;
+        font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+        font-size: 16px;
+}
+#inscricaoonline > label {
+	font-size: 18px;
+	color: #000000;
+	text-shadow: 0px 1px 0px #fff;
+	display: block;
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+#inscricaoonline > input[type="text"], #inscricaoonline > input[type="button"], #inscricaoonline > input[type="submit"], #inscricaoonline > input[type="password"], #inscricaoonline > textarea {
+    display: block;
+}
+
+#inscricaoonline > input[type="text"], #inscricaoonline > input[type="button"], #inscricaoonline > input[type="submit"], #inscricaoonline > input[type="password"], #inscricaoonline > textarea, #inscricaoonline > select {
+        height: 27px;
+        width: 365px;
+        -webkit-border-radius: 3px;  
+        -moz-border-radius: 3px;  
+        border-radius: 3px;
+        border: 0px solid #FFFFFF;
+        outline: none;
+        text-shadow: 0px 1px 0px #fff;
+        background: -webkit-gradient(linear, left top, left bottombottom, from(#94C9F7), to(#ffffff));  
+        background: -moz-linear-gradient(top,  #FEF1EC  #ffffff);
+        -webkit-box-shadow: 1px 1px 0px #66aa00;  
+        -moz-box-shadow: 1px 1px 0px #66aa00;  
+        box-shadow:  1px 1px 0px #66aa00;
+        margin-left: 15px;
+}
+
+#inscricaoonline > input[type="submit"] {
+        height: 40px;
+        width: 200px;
+        font-size: 13px;
+        text-transform: uppercase;
+        margin: 10px auto;
+        color: #66aa00;
+        background: #FFFFFF;
+}
+
+#imgcaptcha {
+    width: 160px;
+    margin: 5px 0 5px 15px;
+}
+
+.acont-subevet-box {
+    width: 215px;
+    height: 260px;
+    background-color: #66AA00;
+    margin: 7px;
+    padding: 10px;
+    border-radius: 10px;
+    float: left;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+.acont-subevet-box #titulo {
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    height: 50px;
+    overflow-y: hidden;
+}
+
+.acont-subevet-box #desc {
+    display: block;
+    overflow-y: auto;
+    height: 120px;
+    width: 100%;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+#table-detail-acon th {
+    padding: 10px;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 15px;
+    text-align: left;
+}
+
+#table-detail-acon td {
+    padding: 10px;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 14px;
+}
+
+#table-detail-hor {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+}
+
+#table-detail-hor td, #table-detail-hor th {
+        border: solid 1px black;
+        padding: 3px 5px;
+        margin:  0;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 13px;
+}
+
+input[type="button"] {
+    -webkit-border-radius: 3px;  
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 10px 0;
+    border: 0px solid #FFFFFF;
+    outline: none;
+    height: 27px;
+}
+
+.acont-subevet-box input {
+    width: 100%;
+}
+
+#bt-participar {
+    width: 300px;
+    height: 40px;
+    display: block;
+    position: relative;
+    margin: 15px auto;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+    text-transform: uppercase;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+}
+
+#area-user-schedule li {
+    list-style: none;
+    float: right;
+    background-color: #66AA00;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 6px 12px;
+    margin: 0 0 0 3px;
+    text-align: center;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border-top: 1px solid #66AA00;
+    border-left: 1px solid #66AA00;
+    border-right: 1px solid #66AA00;
+    cursor: pointer;
+}
+
+#area-user-schedule #tab-list, #area-user-schedule #tab-schedule {
+    clear: both;
+    background-color: #66AA00;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 6px 12px;
+    margin: 0 0 3px 0;
+    color: white;
+}
+
+#table-list-tab {
+    width: 100%;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#table-list-tab td {
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    text-align: center;
+    padding: 5px;
+}
+
+#table-list-tab td a {
+    cursor: pointer;
+}
+
+#area-user-schedule #tab-list .sched-datas,#area-user-schedule #tab-schedule .sched-datas {
+    background-color: #CFE4A1;
+    border-radius: 5px 5px 0 0;
+    padding: 6px 12px;
+    text-align: center;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    width: 70px;
+    font-weight: bold;
+    font-size: 11px;
+    margin: 3px 0 0 0;
+    color: #66AA00;
+}
+
+#area-user-schedule #tab-list .sched-datas-con, #area-user-schedule #tab-schedule .sched-datas-con {
+    background-color: #CFE4A1;
+    border-radius: 0 5px 5px 5px;
+    margin: 0;
+    color: #66AA00;
+    font-size: 11px;
+    padding: 6px;
+}
+
+#area-user-schedule #tab-schedule .sched-datas-con div {
+    position: relative;
+    margin: 3px 0;
+    height: 18px;
+}
+
+#area-user-schedule #tab-schedule .sched-datas-con div span {
+    margin: 0 2px;
+    position: absolute;
+    left: 200px;
+    font-size: 14px;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    
+}
+#area-user-schedule #tab-schedule .sched-datas-con div .sch-local {
+    position: absolute;
+    width: 200px;
+    height: 18px;
+    left: 0;
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 14px;
+    overflow-y: hidden;
+}
+
+.hora-sch-comp {
+    background-color: #FF1100;
+    border-radius: 8px;
+}
+
+#area-user-confirm input[type='text'] {
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 28px;
+    display: block;
+    padding: 5px;
+    width: 700px;
+}
+
+#area-user-confirm input[type='button'] {
+    height: 40px;
+    width: 100px;
+}
+
+#area-user-confirm label {
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+#tb-menus {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+#tb-menus tr td {
+    border:1px solid black;
+    text-align: left;
+    padding: 5px;
+}
+#tb-menus tr th {
+    border:1px solid black;
+    text-align: left;
+    padding: 5px;
+}
+
+/* Plataforma do Usuario */
+            #bar-info-platuser {
+                text-align: right;
+                color: #66AA00;
+                font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+                font-size: 17px;
+                padding: 5px;
+            }
+            
+            #bar-info-platuser a {
+                color: white;
+                border-radius: 5px;
+                background-color: #66AA00;
+                padding: 5px;
+                text-decoration: none;
+                width: 130px;
+                display: inline-block;
+                text-align: center;
+                cursor: pointer;
+            }
+            
+            #bar-info-platuser a:hover {
+                background-color: #ff1100;
+            }
+
+            .select-sub-event {
+                margin: 8px;
+                border-radius: 10px;
+                -webkit-box-shadow: 0px 0px 8px #66AA00;  
+                -moz-box-shadow: 0px 0px 8px #66AA00;  
+                box-shadow: 0px 0px 8px #66AA00;
+                margin: 8px;
+                float: left;
+            }
+            
+            #area-user-breadcrumb {
+                border: 1px solid #66AA00;
+                font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+                font-size: 15px;
+                margin: 10px 0 3px 0;
+                padding: 9px;
+                border-radius: 7px;
+                color: #66AA00;
+            }
+            
+            #area-user-breadcrumb a {
+                font-weight:  bold;
+                color: #66AA00;
+            }
+            
+            #area-user-breadcrumb a:hover {
+                font-weight:  bold;
+                color: #ff1100;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            
+            .more_details {
+                text-decoration: underline;
+            }
+            .more_details:hover {
+                color: #ff1100;
+            }
