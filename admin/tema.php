@@ -31,6 +31,11 @@ function modifyTheme(){
 
 function selectCores(){
     id = $("#idtheme").val();
+    if(id.indexOf('*') == 0){
+		$('#cores-theme input').attr("disabled", true);
+	} else {
+		$('#cores-theme input').attr("disabled", false);
+	}
     $("#cor1").val(temas[id][0]);
     $("#cor2").val(temas[id][1]);
     $("#cor3").val(temas[id][2]);
