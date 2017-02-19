@@ -62,7 +62,7 @@ O ScholarEvents é uma espécie de CMS para gerenciar eventos acadêmicos. Foi d
    
 4) Acesse seu site em http://seudominio/scholarevents e preencha os dados necessários.
 
-5) Após a instalação se completada acesse a área do administrador:
+5) Após a instalação ser completada acesse a área do administrador:
    
     login: admin
     senha: admin
