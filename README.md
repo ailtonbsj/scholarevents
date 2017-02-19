@@ -50,5 +50,17 @@ O ScholarEvents é uma espécie de CMS para gerenciar eventos acadêmicos. Foi d
  - Sevidor MySQL
 
 ## INSTALAÇÃO
-Necessita de um banco de dados criado previamente.
-Endereço host, user e senha do mysql e nome do banco de dados.
+1) Crie um banco de dados no mysql, obtenha o nome do host, user, senha e banco.
+2) Na pasta www do seu webserver (htdocs para Xampp) execute o comando abaixo:
+
+    git clone http://github.com/ailtonbsj/scholarevents scholarevents
+   
+3) Caso use linux altere as permissões para ficar igual ao windows:
+
+    chmod 777 -R scholarevents
+   
+4) Acesse seu site em http://seudominio/scholarevents e preencha os dados necessários.
+5) Após a instalação se completada acesse a área do administrador:
+   
+    login: admin
+    senha: admin
