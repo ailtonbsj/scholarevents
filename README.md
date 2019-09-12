@@ -53,26 +53,28 @@ O ScholarEvents é uma espécie de CMS para gerenciar eventos acadêmicos. Foi d
 1) Crie um banco de dados no mysql, obtenha o nome do host, user, senha e banco.
 
 2) Na pasta www do seu webserver (htdocs para Xampp) execute o comando abaixo:
-
-    git clone http://github.com/ailtonbsj/scholarevents scholarevents
+```
+git clone http://github.com/ailtonbsj/scholarevents scholarevents
+```
    
 3) Caso use linux altere as permissões para ficar igual ao windows:
-
-    chmod 777 -R scholarevents
-   
+```
+chmod 777 -R scholarevents
+```   
 4) Acesse seu site em http://seudominio/scholarevents e preencha os dados necessários.
 
 5) Após a instalação ser completada acesse a área do administrador:
-   
-    login: admin
-    senha: admin
+```
+login: admin
+senha: admin
+```
 
 ## Telas
 
-![tela1] (https://ailtonbsj.files.wordpress.com/2017/01/01.png?w=395&h=316)
+![tela1](https://ailtonbsj.files.wordpress.com/2017/01/01.png?w=395&h=316)
 
 
-![tela2] (https://ailtonbsj.files.wordpress.com/2017/01/02.png?w=394)
+![tela2](https://ailtonbsj.files.wordpress.com/2017/01/02.png?w=394)
 
 
-![tela3] (https://ailtonbsj.files.wordpress.com/2017/01/screenshot-from-2017-02-14-16-32-41.png?w=390&h=272)
+![tela3](https://ailtonbsj.files.wordpress.com/2017/01/screenshot-from-2017-02-14-16-32-41.png?w=390&h=272)
