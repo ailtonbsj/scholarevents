@@ -334,8 +334,8 @@ elseif($infor == "datas"){
     }
 
     $sqlData = "SELECT * FROM sch_datas WHERE label = 'Evento:FIM' OR label = 'Evento:Inicio' OR label = 'InscricaoOnline:Fim' OR label = 'InscricaoOnline:Inicio' OR label = 'BloqueioCursos'";
-    $busca = mysql_query($sqlData,$link1);
-    while($linha = mysql_fetch_assoc($busca)){
+    $busca = $link1->query($sqlData);
+    foreach($busca->fetchAll(PDO::FETCH_ASSOC) as $linha){
         switch ($linha['label']){
             case "Evento:Inicio":
                 $eventoInicio = converteData($linha['data']);

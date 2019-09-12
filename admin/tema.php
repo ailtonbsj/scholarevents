@@ -1,7 +1,7 @@
 <?php
 require_once '../link1.php';
 $sqlThme = "SELECT * FROM sch_temas";
-$buscaTheme = mysql_query($sqlThme,$link1);
+$buscaTheme = $link1->query($sqlThme);
 if(!$buscaTheme){
     echo "ERROR";
     exit;
@@ -51,12 +51,12 @@ function selectCores(){
 $(function(){
     <?php
     $sqlThme2 = "SELECT * FROM sch_temas";
-    $buscaTheme2 = mysql_query($sqlThme2,$link1);
+    $buscaTheme2 = $link1->query($sqlThme2);
     if(!$buscaTheme2){
         echo "ERROR";
         exit;
     }
-    while($lnTh2 = mysql_fetch_assoc($buscaTheme2)){
+    foreach($buscaTheme2->fetchAll(PDO::FETCH_ASSOC) as $lnTh2){
         echo "temas['". $lnTh2['id'] ."'] = new Array('". $lnTh2['cor1'] ."','". $lnTh2['cor2'] ."','". $lnTh2['cor3'] ."','". $lnTh2['cor4'] ."','". $lnTh2['cor5'] ."','". $lnTh2['cor6'] ."');\n";
     }
     ?>
@@ -71,7 +71,7 @@ $(function(){
 <form id="formtheme" name="formtheme">
 <select id="idtheme" name="idtheme">
     <?php
-        while($lnTh = mysql_fetch_assoc($buscaTheme)){
+        foreach($buscaTheme->fetchAll(PDO::FETCH_ASSOC) as $lnTh){
             echo "<option alt='". $lnTh['block'] ."' value=\"". $lnTh['id'] ."\"".  (($lnTh['ativo'] == "T")?(" selected='selected'"):("")) .">". $lnTh['id'] ."</option>";
         }
     ?>

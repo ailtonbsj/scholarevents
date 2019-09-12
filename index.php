@@ -62,13 +62,19 @@ $sqldb[4] =
   PRIMARY KEY (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
+$inscricaoOnlineInicio = date("Y-m-d 05:00:00");
+$inscricaoOnlineFim = date("Y-m-d 08:59:59");
+$bloqueioCursos = date("Y-m-d 09:00:00");
+$eventoInicio = date("Y-m-d 09:00:00");
+$eventoFim = date("Y-m-d 23:30:00");
+
 $sqldb[5] =
 "INSERT INTO `sch_datas` (`label`, `data`) VALUES
-('BloqueioCursos', '2014-06-02 23:30:00'),
-('Evento:Fim', '2014-06-03 23:30:00'),
-('Evento:Inicio', '2014-04-01 05:00:00'),
-('InscricaoOnline:Fim', '2014-06-02 23:30:00'),
-('InscricaoOnline:Inicio', '2014-06-01 05:00:00');";
+('BloqueioCursos', '$bloqueioCursos'),
+('Evento:Fim', '$eventoFim'),
+('Evento:Inicio', '$eventoInicio'),
+('InscricaoOnline:Fim', '$inscricaoOnlineFim'),
+('InscricaoOnline:Inicio', '$inscricaoOnlineInicio');";
 
 $sqldb[6] =
 "CREATE TABLE IF NOT EXISTS `sch_espacotempo` (
