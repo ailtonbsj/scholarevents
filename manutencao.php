@@ -1,8 +1,8 @@
 <?php
 include './link1.php';
 $sqlTexto = "SELECT * FROM sch_textos WHERE id='admin'";
-$buscaTexto = mysql_query($sqlTexto,$link1);
-while($linhaTexto = mysql_fetch_assoc($buscaTexto)){
+$buscaTexto = $link1->query($sqlTexto);
+foreach($buscaTexto->fetchAll(PDO::FETCH_ASSOC) as $linhaTexto){
     switch ($linhaTexto['id']){
         case "admin":
             $adminpass = $linhaTexto['texto'];
