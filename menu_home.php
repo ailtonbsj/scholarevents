@@ -1,7 +1,7 @@
 <?php
 //menu mais
 $sqlMenuMais = "SELECT * FROM sch_menu_mais";
-$buscaMenuMais = mysql_query($sqlMenuMais,$link1);
+$buscaMenuMais = $link1->query($sqlMenuMais);
 ?>   
 <div id="menu_main">
 	<ul>
@@ -11,12 +11,12 @@ $buscaMenuMais = mysql_query($sqlMenuMais,$link1);
 <?php
 require 'link1.php';
 $sqlSubEventos = "SELECT * FROM sch_subeventos";
-$buscaSubEvento = mysql_query($sqlSubEventos);
+$buscaSubEvento = $link1->query($sqlSubEventos);
 if(!$buscaSubEvento){
     echo "erro4";
     exit;
 }
-while($linhaSubEvento = mysql_fetch_assoc($buscaSubEvento)){
+while($linhaSubEvento = $buscaSubEvento->fetchAll(PDO::FETCH_ASSOC)){
     echo "<a href=\"index.php?subeventos=". $linhaSubEvento['id'] ."\"><li>" . $linhaSubEvento['titulo'] . "</li></a>";
 }
 ?>
@@ -28,7 +28,7 @@ while($linhaSubEvento = mysql_fetch_assoc($buscaSubEvento)){
 		<li>Mais
                     <ul>
                     <?php
-                    while($linhaMenuMais = mysql_fetch_assoc($buscaMenuMais)){
+                    while($linhaMenuMais = $buscaMenuMais->fetchAll(PDO::FETCH_ASSOC)){
                     
                     ?>
                     <a href="<?php echo $linhaMenuMais['url'] ?>"><li><?php echo $linhaMenuMais['nome_link'] ?></li></a>

@@ -7,12 +7,10 @@ if(isset($_POST['host'])){
     $senha = $_POST['senha'];
     $db = $_POST['database'];
     
-    $link1 = @ mysql_connect("$host","$user","$senha");
+    $link1 = new PDO("mysql:host={$host};port=3307;dbname={$db};charset=utf8", $user, $senha);
+    $link1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if($link1){
-        $selectdb = @ mysql_selectdb("$db");
-        if($selectdb){
-            
-            
+             
 $sqldb[0] = 
 "CREATE TABLE IF NOT EXISTS `sch_acontecimentos` (
   `id_acon` bigint(14) NOT NULL,
@@ -170,16 +168,16 @@ $sqldb[17] =
 ('admin', 'admin'),
 ('cert0', 'Certificamos que'),
 ('cert1', 'participou do'),
-('cert2', ' no perÃ­odo de'),
+('cert2', ' no período de'),
 ('cert3', 'a'),
 ('cert4', 'na oficina'),
-('cert5', 'com carga horÃ¡ria de'),
+('cert5', 'com carga horária de'),
 ('cert6', 'horas/aula.'),
-('html1', '<div style=\"background:white; border: dashed 1px black;padding:30px;\">Local de cÃ³digo HTML1</div>'),
-('html2', '<div style=\"background:white; border: dashed 1px black;padding:30px;\">Local de cÃ³digo HTML2</div>'),
+('html1', '<div style=\"background:white; border: dashed 1px black;padding:30px;\">Local de código HTML1</div>'),
+('html2', '<div style=\"background:white; border: dashed 1px black;padding:30px;\">Local de código HTML2</div>'),
 ('manutencao', 'inativo'),
-('sobre', 'Aqui fica a descriÃ§Ã£o sobre o evento.'),
-('titulo', 'ScholarEvents versÃ£o 1.0');";
+('sobre', 'Aqui fica a descrição sobre o evento.'),
+('titulo', 'ScholarEvents versão 1.0');";
 
 $sqldb[18] =
 "CREATE TABLE IF NOT EXISTS `sch_usuarios` (
@@ -229,14 +227,15 @@ $sqldb[25] =
   ADD CONSTRAINT `profkey` FOREIGN KEY (`id_prof`) REFERENCES `sch_usuarios` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;";
 
 for ($i = 0; $i <= 25; $i++) {
-    $busca = mysql_query(utf8_decode($sqldb[$i]),$link1);
+  $busca = $link1->query($sqldb[$i]);
     if(!$busca){
         echo "ERROR FATAL";
         exit;
     }
 }
 
-$textLink1 = "\$link1 = mysql_connect('$host','$user','$senha');mysql_selectdb('$db');";
+$textLink1 = "\$link1 = new PDO(\"mysql:host={$host};port=3307;dbname={$db};charset=utf8\", '$user', '$senha');\n";
+$textLink1.= "\$link1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);";
 
 $arqLink1 = @ fopen("link1.php", "w");
 if(!$arqLink1){
@@ -253,10 +252,6 @@ rename("indexbkp.php", "index.php");
 
 header("location: index.php");
         
-        }
-        else{
-            $error = "err";
-        }
     }
     else{
         $error = "err";

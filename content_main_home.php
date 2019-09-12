@@ -76,10 +76,10 @@ if(isset($_POST['user'])){
 	<div id="banner_rotativo" >
     <ul>
         <?php
-                if(mysql_num_rows($buscaBanPrincipal) == 0){
+                if($buscaBanPrincipal->rowCount() == 0){
             echo "<li><img src=\"images/banner.png\" alt=\"image description\"/></li>";
         }
-        while($linhaBanPrincipal = mysql_fetch_assoc($buscaBanPrincipal)){        
+        while($linhaBanPrincipal = $buscaBanPrincipal->fetchAll(PDO::FETCH_ASSOC)){        
         ?>
         <li><img src="images/<?php echo $linhaBanPrincipal['nome_img'] ?>" alt="image description"/></li>
         <?php
@@ -101,12 +101,12 @@ if(isset($_POST['user'])){
 <?php
 require 'link1.php';
 $sqlSubEventos = "SELECT * FROM sch_subeventos";
-$buscaSubEvento = mysql_query($sqlSubEventos);
+$buscaSubEvento = $link1->query($sqlSubEventos);
 if(!$buscaSubEvento){
     echo "erro4";
     exit;
 }
-while($linhaSubEvento = mysql_fetch_assoc($buscaSubEvento)){
+while($linhaSubEvento = $buscaSubEvento->fetchAll(PDO::FETCH_ASSOC)){
     echo "<a href=\"index.php?subeventos=". $linhaSubEvento['id'] ."\"><li>" . "<img src=\"images/". $linhaSubEvento['logo'] . "\" /></li></a>";
 }
 ?>
