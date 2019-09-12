@@ -37,10 +37,10 @@
         $sql5 = "UPDATE sch_usuarios SET nome = $nome, email = $email, cpf = $cpf, senha = $senha, celular = $celular,"
                 . " telefone = $telefone, d_nascimento = $data_nasc, tipo = '$tipo_usuario' WHERE id = $id_usuario;";
         if($novo_user){
-            $busca4 = mysql_query($sql4, $link1);
+            $busca4 = $link1->query($sql4);
         }
         else{
-            $busca4 = mysql_query($sql5, $link1);
+            $busca4 = $link1->query($sql5);
         }
         if($busca4){
             //Atualiza db Prof and Aluno here
@@ -50,10 +50,10 @@
                 $sql6 = "INSERT INTO sch_professores (id,minicv) VALUES ($id_usuario, $minicv);";
                 $sql7 = "UPDATE sch_professores SET minicv = $minicv WHERE id = $id_usuario;";
                 if($novo_prof){
-                    $busca5 = mysql_query($sql6,$link1);
+                    $busca5 = $link1->query($sql6);
                 }
                 else{
-                    $busca5 = mysql_query($sql7,$link1);
+                    $busca5 = $link1->query($sql7);
                 }
                 if(!$busca5){
                     header("Location: index.php?error=5");
@@ -63,7 +63,7 @@
             else if(!$novo_user) {
                 //here remove prof
                 $sqlRemp = "DELETE FROM sch_professores WHERE id = '$id_usuario'";
-                mysql_query($sqlRemp);
+                $link1->query($sqlRemp);
             }
             if($isAluno){
                 //trata db de aluno
@@ -77,10 +77,10 @@
                 $sql9 = "UPDATE sch_alunos SET matricula = $matricula, uf = $uf, cidade = $cidade, bairro = $bairro,"
                         . " endereco = $endereco WHERE id = $id_usuario;";
                 if($novo_aluno){
-                    $busca6 = mysql_query($sql8,$link1);
+                    $busca6 = $link1->query($sql8);
                 }
                 else{
-                    $busca6 = mysql_query($sql9,$link1);
+                    $busca6 = $link1->query($sql9);
                 }
                 if(!$busca6){
                     header("Location: index.php?error=6");
@@ -89,7 +89,7 @@
             }
             else if(!$novo_user) {
                 $sqlRemAlun = "DELETE FROM sch_alunos WHERE id = '$id_usuario'";
-                mysql_query($sqlRemAlun);
+                $link1->query($sqlRemAlun);
             }
             header("Location: index.php?list_user&sucess=cadastro");
         }
