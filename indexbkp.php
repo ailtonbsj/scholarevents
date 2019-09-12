@@ -2,12 +2,12 @@
     require './link1.php';
     require './seguranca.php';
     $sqlTexto = "SELECT * FROM sch_textos";
-    $buscaTexto = mysql_query($sqlTexto,$link1);
+    $buscaTexto = $link1->query($sqlTexto);
     $titulo_site = "";
     $html1 = "";
     $html2 = "";
     $adminpass = "";
-    while($linhaTexto = mysql_fetch_assoc($buscaTexto)){
+    foreach($buscaTexto->fetchAll(PDO::FETCH_ASSOC) as $linhaTexto){
         switch ($linhaTexto['id']){
             case "titulo":
                 $titulo_site = $linhaTexto['texto'];
@@ -28,8 +28,8 @@
     }
     //Logo
     $sqlLogoPrincipal = "SELECT * FROM sch_images WHERE nome_img LIKE '%log%'";
-    $buscaLogoPrincipal = mysql_query($sqlLogoPrincipal,$link1);
-    $linhaLogoPrincipal = mysql_fetch_assoc($buscaLogoPrincipal);
+    $buscaLogoPrincipal = $link1->query($sqlLogoPrincipal);
+    $linhaLogoPrincipal = $buscaLogoPrincipal->fetchAll(PDO::FETCH_ASSOC)[0];
     $imgLogoPrincipal = $linhaLogoPrincipal['nome_img'];
     if(!(file_exists("images/" . $imgLogoPrincipal))){
         $imgLogoPrincipal = "logo.png";
@@ -37,7 +37,7 @@
     
     //banners
     $sqlBanPrincipal = "SELECT * FROM sch_images WHERE nome_img LIKE '%ban%'";
-    $buscaBanPrincipal = mysql_query($sqlBanPrincipal,$link1);
+    $buscaBanPrincipal = $link1->query($sqlBanPrincipal);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

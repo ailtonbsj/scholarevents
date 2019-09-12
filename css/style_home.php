@@ -4,8 +4,8 @@ header("Content-type: text/css");
 require '../link1.php';
 
 $sqlTheme = "SELECT * FROM sch_temas WHERE ativo = 'T'";
-$buscaTheme = mysql_query($sqlTheme,$link1);
-$lnTheme = mysql_fetch_assoc($buscaTheme);
+$buscaTheme = $link1->query($sqlTheme);
+$lnTheme = $buscaTheme->fetchAll(PDO::FETCH_ASSOC)[0];
 
 $cor1 = $lnTheme['cor1']; //#66AA00
 $cor2 = $lnTheme['cor2']; //#CFE4A1
