@@ -297,7 +297,7 @@ if($infor == "init"){
         </thead>
         <tbody>
             <?php
-            while($linhaMenuMais = $buscaMenuMais->fetchAll(PDO::FETCH_ASSOC)){
+            foreach($buscaMenuMais->fetchAll(PDO::FETCH_ASSOC) as $linhaMenuMais){
             ?>
             <tr>
                 <td><a href="<?php echo $linhaMenuMais['url'] ?>"><?php echo $linhaMenuMais['nome_link'] ?></a></td>
