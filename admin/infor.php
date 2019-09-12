@@ -11,7 +11,7 @@
         }
         $sqlmanu = "UPDATE sch_textos SET texto = '". $dtm ."' WHERE id = 'manutencao'";
         
-        $buscamanu = mysql_query($sqlmanu,$link1);
+        $buscamanu = $link1->query($sqlmanu);
         if(!$buscamanu){
             $manuf = "sim";
         }
@@ -21,11 +21,11 @@
     }
     
     $sqlTexto = "SELECT * FROM sch_textos";
-    $buscaTexto = mysql_query($sqlTexto);
+    $buscaTexto = $link1->query($sqlTexto);
     $titulo_site = "";
     $html1 = "";
     $html2 = "";
-    while($linhaTexto = mysql_fetch_assoc($buscaTexto)){
+    foreach($buscaTexto->fetchAll(PDO::FETCH_ASSOC) as $linhaTexto){
         switch ($linhaTexto['id']){
             case "titulo":
                 $titulo_site = $linhaTexto['texto'];
@@ -46,18 +46,18 @@
     }
     
     $sqlMenuMais = "SELECT * FROM sch_menu_mais";
-    $buscaMenuMais = mysql_query($sqlMenuMais,$link1);
+    $buscaMenuMais = $link1->query($sqlMenuMais);
     
     $sqlLogoPrincipal = "SELECT * FROM sch_images WHERE nome_img LIKE '%log%'";
-    $buscaLogoPrincipal = mysql_query($sqlLogoPrincipal,$link1);
-    $linhaLogoPrincipal = mysql_fetch_assoc($buscaLogoPrincipal);
+    $buscaLogoPrincipal = $link1->query($sqlLogoPrincipal);
+    $linhaLogoPrincipal = $buscaLogoPrincipal->fetchAll(PDO::FETCH_ASSOC)[0];
     $imgLogoPrincipal = $linhaLogoPrincipal['nome_img'];
     if(!file_exists("../images/" . $imgLogoPrincipal)){
         $imgLogoPrincipal = "logo.png";
     }
     
     $sqlBanPrincipal = "SELECT * FROM sch_images WHERE nome_img LIKE '%ban%'";
-    $buscaBanPrincipal = mysql_query($sqlBanPrincipal,$link1);
+    $buscaBanPrincipal = $link1->query($sqlBanPrincipal);
     
     if(isset($_GET['sucess'])){
 ?>
@@ -236,7 +236,7 @@ if($infor == "init"){
                 <tbody>
                     <?php
                     $urlImg = "banner.png";
-                    while($linhaBanPrincipal = mysql_fetch_assoc($buscaBanPrincipal)){
+                    foreach($buscaBanPrincipal->fetchAll(PDO::FETCH_ASSOC) as $linhaBanPrincipal){
                         $urlImg = $linhaBanPrincipal['nome_img'];
                     ?>
                     <tr>
@@ -297,7 +297,7 @@ if($infor == "init"){
         </thead>
         <tbody>
             <?php
-            while($linhaMenuMais = mysql_fetch_assoc($buscaMenuMais)){
+            while($linhaMenuMais = $buscaMenuMais->fetchAll(PDO::FETCH_ASSOC)){
             ?>
             <tr>
                 <td><a href="<?php echo $linhaMenuMais['url'] ?>"><?php echo $linhaMenuMais['nome_link'] ?></a></td>

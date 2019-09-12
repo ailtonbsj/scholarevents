@@ -5,20 +5,20 @@ if (!isset($_SESSION)) {
 date_default_timezone_set("Brazil/East");
 $agora = date("Y-m-d H:i:s");
 $sqlDfim = "SELECT * FROM sch_datas WHERE label = 'InscricaoOnline:Fim' AND NOT(data < '$agora')";
-$buscaInscF = mysql_query($sqlDfim);
+$buscaInscF = $link1->query($sqlDfim);
 $inscricoesaberta = false;
 $texto = "";
-if(mysql_num_rows($buscaInscF) == 0){
+if($buscaInscF->rowCount() == 0){
     //fechada
     $texto = "<strong>Inscrições encerradas!!!</strong>";
     
 }else {
     $sqlDini = "SELECT * FROM sch_datas WHERE label = 'InscricaoOnline:Inicio' AND NOT(data < '$agora')";
-    $buscaInsc = mysql_query($sqlDini);
-    if(mysql_num_rows($buscaInsc) == 0){
+    $buscaInsc = $link1->query($sqlDini);
+    if($buscaInsc->rowCount() == 0){
         //inscrições abertas
         $inscricoesaberta = true;
-        $DFinalInsc = mysql_fetch_assoc($buscaInscF);
+        $DFinalInsc = $buscaInscF->fetchAll(PDO::FETCH_ASSOC)[0];
         $dfinalconf = explode(" ",$DFinalInsc['data']);
         $dtconfigfin = explode("-",$dfinalconf[0]);
         $texto = "<strong>As inscrições irão se encerrar na data: ";
@@ -28,7 +28,7 @@ if(mysql_num_rows($buscaInscF) == 0){
     }
     else {
         //inscrições serao abertas
-        $linha = mysql_fetch_assoc($buscaInsc);
+        $linha = $buscaInsc->fetchAll(PDO::FETCH_ASSOC)[0];
         $dataininscrica = explode(" ", $linha['data']);
         $dtconfg = explode("-", $dataininscrica[0]);
         $texto = "<strong>As inscrições on-line só estarão disponiveis na data: </strong>";

@@ -9,20 +9,20 @@
         
         //remove os vinculos com acontecimento
         $sqlRemAlunos = "DELETE FROM sch_aluno_acont WHERE id_al = '$id'";
-        $buscaRemAlunos = mysql_query($sqlRemAlunos,$link1);
+        $buscaRemAlunos = $link1->query($sqlRemAlunos);
         if(!$buscaRemAlunos){
             header("Location: index.php?error=7");
         }
         
         //remove o aluno
         $sqlRemAlunos = "DELETE FROM sch_alunos WHERE id = '$id'";
-        $buscaRemAlunos = mysql_query($sqlRemAlunos,$link1);
+        $buscaRemAlunos = $link1->query($sqlRemAlunos);
         if(!$buscaRemAlunos){
             header("Location: index.php?error=7");
         }
         //remove o prof
         $sql11 = "DELETE FROM sch_professores WHERE id = $id";
-        $busca11 = mysql_query($sql11,$link1);
+        $busca11 = $link1->query($sql11);
         if(!$busca11){
             header("Location: index.php?error=7");
             exit;
@@ -30,7 +30,7 @@
         
         //remove user
         $sql11 = "DELETE FROM sch_usuarios WHERE id = $id";
-        $busca11 = mysql_query($sql11,$link1);
+        $busca11 = $link1->query($sql11);
         if(!$busca11){
             header("Location: index.php?error=7");
             exit;
@@ -41,7 +41,7 @@
     if(isset($_GET["lid"])){
         $lid = $_GET["lid"];
         $sql15 = "DELETE FROM sch_locais WHERE id = $lid";
-        $busca15 = mysql_query($sql15,$link1);
+        $busca15 = $link1->query($sql15);
         if(!$busca15){
             header("Location: index.php?error=8");
             exit;
@@ -53,7 +53,7 @@
         $linkmaisget = $_GET['linkid'];
         if($linkmaisget == "") $linkmaisget="ghgh";
         $sqlLinkId = "DELETE FROM sch_menu_mais WHERE nome_link = '$linkmaisget'";
-        $buscaDeleteLink = mysql_query($sqlLinkId);
+        $buscaDeleteLink = $link1->query($sqlLinkId);
         if(!$buscaDeleteLink){
             header("Location: index.php?error=10");
             exit;
@@ -63,14 +63,14 @@
     
     if(isset($_GET['bannerid'])){
         $idban = $_GET['bannerid'];
-        $urlBan = $_SERVER['DOCUMENT_ROOT'] .'/scholarevents/images/' . $idban;
+        $urlBan = dirname($_SERVER['SCRIPT_FILENAME']) .'/../images/' . $idban;
         $deleteBanner = unlink($urlBan);
         if(!$deleteBanner){
             header("Location: index.php?error=15");
             exit;
         }
         $sqlDeleteBanner = "DELETE FROM sch_images WHERE nome_img LIKE '%$idban%'";
-        $buscaDeleteBanner = mysql_query($sqlDeleteBanner,$link1);
+        $buscaDeleteBanner = $link1->query($sqlDeleteBanner);
         if(!$buscaDeleteBanner){
             header("Location: index.php?error=16");
             exit;

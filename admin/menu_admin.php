@@ -13,12 +13,12 @@
 <?php
 require '../link1.php';
 $sqlSubEventos = "SELECT * FROM sch_subeventos";
-$buscaSubEvento = mysql_query($sqlSubEventos);
+$buscaSubEvento = $link1->query($sqlSubEventos);
 if(!$buscaSubEvento){
     echo "erro4";
     exit;
 }
-while($linhaSubEvento = mysql_fetch_assoc($buscaSubEvento)){
+while($linhaSubEvento = $buscaSubEvento->fetchAll(PDO::FETCH_ASSOC)){
     echo "<a href=\"?novosub=". $linhaSubEvento['id'] ."\"><li>" . $linhaSubEvento['titulo'] . "</li></a>";
 }
 ?>
