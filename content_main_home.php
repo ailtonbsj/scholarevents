@@ -79,7 +79,7 @@ if(isset($_POST['user'])){
                 if($buscaBanPrincipal->rowCount() == 0){
             echo "<li><img src=\"images/banner.png\" alt=\"image description\"/></li>";
         }
-        while($linhaBanPrincipal = $buscaBanPrincipal->fetchAll(PDO::FETCH_ASSOC)){        
+        foreach($buscaBanPrincipal->fetchAll(PDO::FETCH_ASSOC) as $linhaBanPrincipal){        
         ?>
         <li><img src="images/<?php echo $linhaBanPrincipal['nome_img'] ?>" alt="image description"/></li>
         <?php

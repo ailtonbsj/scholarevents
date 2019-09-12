@@ -67,7 +67,7 @@ if(($tMime == 'image/png') or ($tMime == 'image/jpg') or ($tMime == 'image/jpeg'
         }
         if($_POST['tipoupload'] == "logo"){
             $sqlLogDelete = "DELETE FROM sch_images WHERE nome_img LIKE '%log%'";
-            $buscaDelete = mysql_query($sqlLogDelete,$link1);
+            $buscaDelete = $link1->query($sqlLogDelete);
             if(!$buscaDelete){
                 header("Location: index.php?error=14");
                 exit;
@@ -75,14 +75,14 @@ if(($tMime == 'image/png') or ($tMime == 'image/jpg') or ($tMime == 'image/jpeg'
         }
         if($_POST['tipoupload'] == "cert"){
             $sqlLogDelete = "DELETE FROM sch_images WHERE nome_img LIKE '%cer%'";
-            $buscaDelete = mysql_query($sqlLogDelete,$link1);
+            $buscaDelete = $link1->query($sqlLogDelete);
             if(!$buscaDelete){
                 header("Location: index.php?error=14");
                 exit;
             } 
         }
         $sqlLogInsert = "INSERT INTO sch_images (nome_img) VALUES ('$id_img')";
-        $buscaInsert = mysql_query($sqlLogInsert);
+        $buscaInsert = $link1->query($sqlLogInsert);
         if(!$buscaInsert){
             header("Location: index.php?error=14");
             exit;

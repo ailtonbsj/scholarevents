@@ -24,7 +24,7 @@
         $sqlTexto = "INSERT INTO sch_menu_mais (nome_link,url) VALUES ('$nomeLink', '$urlLink');";
     }
     
-    $buscaTexto = mysql_query($sqlTexto,$link1);
+    $buscaTexto = $link1->query($sqlTexto);
     if(!$buscaTexto){
         header("Location: index.php?error=10");
     }

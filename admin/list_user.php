@@ -78,8 +78,8 @@
                     echo "<b>Usando filtro para Alunos</b>";
                 }
             }
-            $busca10 = mysql_query($sql10, $link1);
-            while ($linha10 = mysql_fetch_assoc($busca10)) {
+            $busca10 = $link1->query($sql10);
+            while ($linha10 = $busca10->fetchAll(PDO::FETCH_ASSOC)) {
         ?>
         <tr>
             <td><?php echo $linha10['id'] ?></td>

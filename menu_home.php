@@ -28,7 +28,7 @@ while($linhaSubEvento = $buscaSubEvento->fetchAll(PDO::FETCH_ASSOC)){
 		<li>Mais
                     <ul>
                     <?php
-                    while($linhaMenuMais = $buscaMenuMais->fetchAll(PDO::FETCH_ASSOC)){
+                    foreach($buscaMenuMais->fetchAll(PDO::FETCH_ASSOC) as $linhaMenuMais){
                     
                     ?>
                     <a href="<?php echo $linhaMenuMais['url'] ?>"><li><?php echo $linhaMenuMais['nome_link'] ?></li></a>
