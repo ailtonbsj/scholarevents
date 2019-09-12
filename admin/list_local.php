@@ -9,7 +9,7 @@
             $id = $_POST['id'];
             $sql14 = "UPDATE sch_locais SET local = '$local' WHERE id = $id;";
         }
-        $busca14 = mysql_query($sql14, $link1);
+        $busca14 = $link1->query($sql14);
         if(!$busca14){
             header("Location: index.php?error=9");
             exit;
@@ -75,8 +75,8 @@ if(isset($_GET['list_local'])){
         <?php
             require '../link1.php';
             $sql13 = "SELECT * FROM sch_locais";
-            $busca13 = mysql_query($sql13,$link1);
-            while ($linha13 = mysql_fetch_array($busca13)) {
+            $busca13 = $link1->query($sql13);
+            foreach($busca13->fetchAll(PDO::FETCH_ASSOC) as $linha13) {
         ?>
         <tr>
             <td><?php echo $linha13['id'] ?></td>
