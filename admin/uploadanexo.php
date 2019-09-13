@@ -40,7 +40,7 @@ if($upload_size < 5242880){
     }
     //consulta
     $sqlUpdate1 = "INSERT INTO sch_anexos (id_subev, id_anexo, descricao) VALUES ('$idsubev', '$idupload', '$descricao')";
-    $buscaUpdate1 = mysql_query($sqlUpdate1);
+    $buscaUpdate1 = $link1->query($sqlUpdate1);
     if(!$buscaUpdate1){
         header("Location: index.php?error=14");
         exit;

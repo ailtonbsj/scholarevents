@@ -45,12 +45,12 @@ if($novoSubEv == ""){
 }
 else{
     $sqlSubEvento = "SELECT * FROM sch_subeventos WHERE id = '$novoSubEv'";
-    $buscaSubEvento = mysql_query($sqlSubEvento,$link1);
+    $buscaSubEvento = $link1->query($sqlSubEvento);
     if(!$buscaSubEvento){
         echo "erro3";
         exit;
     }
-    $linhaSubEv = mysql_fetch_assoc($buscaSubEvento);
+    $linhaSubEv = $buscaSubEvento->fetchAll(PDO::FETCH_ASSOC)[0];
     $idsubev = $linhaSubEv['id'];
     $titulo = $linhaSubEv['titulo'];
     $platformSub = $linhaSubEv['plataforma'];
@@ -211,8 +211,9 @@ if($novoSubEv != ""){
         <tbody>
 <?php
 $sqlBuscaAnexos = "SELECT * FROM sch_anexos WHERE id_subev='$idsubev'";
-$buscaAnexos = mysql_query($sqlBuscaAnexos, $link1);
-while($linhaAnexos = mysql_fetch_assoc($buscaAnexos)){
+$buscaAnexos = $link1->query($sqlBuscaAnexos);
+
+foreach($buscaAnexos->fetchAll(PDO::FETCH_ASSOC) as $linhaAnexos){
 ?>
             <tr>
                 <td><?php echo $linhaAnexos['descricao'] ?></td>

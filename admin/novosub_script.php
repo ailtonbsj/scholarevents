@@ -34,7 +34,7 @@ if($idEvent == "new"){
     $idEvent = 'sub' . date("ymdHis");
     $sqlNovoSub = "INSERT INTO sch_subeventos (id, titulo, descricao, plataforma, inform, logo) "
             . "VALUES ('$idEvent', '$tituloSub', '$descricaoSub', '$platformSub', '$inforSub', '$logSub')";
-    $buscaNovoSub = mysql_query($sqlNovoSub,$link1);
+    $buscaNovoSub = $link1->query($sqlNovoSub);
     if(!$buscaNovoSub){
         echo "erro2";
         exit;
@@ -44,7 +44,7 @@ if($idEvent == "new"){
 else{
     $sqlUpdateSub = "UPDATE sch_subeventos SET titulo = '$tituloSub', descricao = '$descricaoSub', "
             . "plataforma = '$platformSub', inform = '$inforSub' WHERE id = '$idEvent'";
-    $buscaUpdateSub = mysql_query($sqlUpdateSub);
+    $buscaUpdateSub = $link1->query($sqlUpdateSub);
     if(!$buscaUpdateSub){
         echo "erro5";
         exit;

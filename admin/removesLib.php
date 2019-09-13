@@ -6,25 +6,25 @@ function removeAcontecimento($idAcon){
     
     //remove os alunos
     $sqlRemAlunos = "DELETE FROM sch_aluno_acont WHERE id_acon = '$idAcon'";
-    $buscaRemAlunos = mysql_query($sqlRemAlunos,$link1);
+    $buscaRemAlunos = $link1->query($sqlRemAlunos);
     if(!$buscaRemAlunos){
         return "ERROR";
     }
     //remove professores
     $sqlRemProf = "DELETE FROM sch_professor_acontecimento WHERE id_acon = '$idAcon'";
-    $buscaRemProf = mysql_query($sqlRemProf,$link1);
+    $buscaRemProf = $link1->query($sqlRemProf);
     if(!$buscaRemProf){
         return "ERROR";
     }
     //remove Horarios
     $sqlRemHora = "DELETE FROM sch_espacotempo WHERE id_acontec = '$idAcon'";
-    $buscaRemHora = mysql_query($sqlRemHora,$link1);
+    $buscaRemHora = $link1->query($sqlRemHora);
     if(!$buscaRemHora){
         return "ERROR";
     }
     //remove Acontecimento
     $sqlRemAcon = "DELETE FROM sch_acontecimentos WHERE id_acon = '$idAcon'";
-    $buscaRemAcon = mysql_query($sqlRemAcon,$link1);
+    $buscaRemAcon = $link1->query($sqlRemAcon);
     if(!$buscaRemAcon){
         return "ERROR";
     }
@@ -34,14 +34,14 @@ function removeAcontecimento($idAcon){
 function removeAnexos($id){
     require '../link1.php';
     
-    $urlfile = $_SERVER['DOCUMENT_ROOT'] .'/scholarevents/anexos/' . $id;
+    $urlfile = dirname($_SERVER['SCRIPT_FILENAME']) .'/../anexos/' . $id;
     $detelou = unlink($urlfile);
     if(!$detelou){
         return "ERROR_UNLINK";
     }
     
     $sqlDel = "DELETE FROM sch_anexos WHERE id_anexo = '$id'";
-    $buscaDel = mysql_query($sqlDel, $link1);
+    $buscaDel = $link1->query($sqlDel);
     if(!$buscaDel){
         return "ERROR_DB";
     }

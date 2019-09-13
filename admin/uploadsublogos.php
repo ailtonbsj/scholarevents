@@ -46,21 +46,21 @@ if(($upload_mime == 'image/png') or ($upload_mime == 'image/jpg') or ($upload_mi
             exit;
         }
         $sqlUpLogSubEv = "SELECT * FROM sch_subeventos WHERE id='$idsubev'";
-        $buscaLogEv = mysql_query($sqlUpLogSubEv, $link1);
+        $buscaLogEv = $link1->query($sqlUpLogSubEv);
         if(!$buscaLogEv){
             header("Location: index.php?error=14");
             exit;
         }
-        $linhaLogEv = mysql_fetch_assoc($buscaLogEv);
+        $linhaLogEv = $buscaLogEv->fetchAll(PDO::FETCH_ASSOC)[0];
         $sqlUpLogSubEv = "UPDATE sch_subeventos SET logo = '$idupload' WHERE id = '$idsubev'";
-        $buscaLogEv = mysql_query($sqlUpLogSubEv, $link1);
+        $buscaLogEv = $link1->query($sqlUpLogSubEv);
         if(!$buscaLogEv){
             header("Location: index.php?error=14");
             exit;
         }
         $nomepadraoImg = $linhaLogEv['logo'];
         if($nomepadraoImg != 'minicursos.png' and $nomepadraoImg != 'palestras.png' and $nomepadraoImg != 'publicacoes.png' and $nomepadraoImg != 'competicoes.png' and $nomepadraoImg != 'visitas.png'){
-            $delete = unlink($_SERVER['DOCUMENT_ROOT'] .'/scholarevents/images/' . $linhaLogEv['logo']);
+            $delete = unlink(dirname($_SERVER['SCRIPT_FILENAME']) .'/../images/' . $linhaLogEv['logo']);
             if(!$delete){
             header("Location: index.php?error=15");
             exit;
