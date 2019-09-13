@@ -36,11 +36,15 @@
                 . "('$id_usuario', $nome, $email, $cpf, $senha,$celular,$telefone,$data_nasc, '$tipo_usuario');";
         $sql5 = "UPDATE sch_usuarios SET nome = $nome, email = $email, cpf = $cpf, senha = $senha, celular = $celular,"
                 . " telefone = $telefone, d_nascimento = $data_nasc, tipo = '$tipo_usuario' WHERE id = $id_usuario;";
-        if($novo_user){
-            $busca4 = $link1->query($sql4);
-        }
-        else{
-            $busca4 = $link1->query($sql5);
+        try {
+            if($novo_user){
+                $busca4 = $link1->query($sql4);
+            }
+            else{
+                $busca4 = $link1->query($sql5);
+            }
+        } catch (PDOException $e) {
+            header("Location: index.php?error=4");
         }
         if($busca4){
             //Atualiza db Prof and Aluno here
