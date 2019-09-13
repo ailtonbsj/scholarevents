@@ -18,17 +18,17 @@
     }
     else{ //modificacao de usuario
         $sql1 = "SELECT * FROM sch_usuarios WHERE id=$id_user";
-        $busca1 = mysql_query($sql1,$link1);
+        $busca1 = $link1->query($sql1);
         if(!$busca1){
             header("Location: index.php?error=1");
             exit;
         }
-        if(mysql_num_rows($busca1) == 0){
+        if($busca1->rowCount() == 0){
             header("Location: index.php?error=1");
             exit;
         }
-        $linha1 = mysql_fetch_assoc($busca1);
-        mysql_free_result($busca1);
+        $linha1 = $busca1->fetchAll(PDO::FETCH_ASSOC)[0];
+        $busca1->closeCursor();
         $tipos = decbin($linha1['tipo']);
         while(strlen($tipos)<4){
             $tipos = '0' . $tipos;
@@ -37,30 +37,30 @@
         if($tipos[0] == '1'){ //professor
             $novo_prof = false;
             $sql2 = "SELECT * FROM sch_professores WHERE id='$id_user'"; 
-            $busca2 = mysql_query($sql2,$link1);
+            $busca2 = $link1->query($sql2);
             if(!$busca2){
                 header("Location: index.php?error=2");
                 exit;
             }
-            if(mysql_num_rows($busca2) == 0){
+            if($busca2->rowCount() == 0){
                 header("Location: index.php?error=2");
                 exit;
             }
-            $linha_prof = mysql_fetch_assoc($busca2);
+            $linha_prof = $busca2->fetchAll(PDO::FETCH_ASSOC);
         }
         if($tipos[3] == '1'){ //aluno
             $novo_aluno = false;
             $sql3 = "SELECT * FROM sch_alunos WHERE id='$id_user'";
-            $busca3 = mysql_query($sql3,$link1);
+            $busca3 = $link1->query($sql3);
             if(!$busca3){
                 header("Location: index.php?error=3");
                 exit;
             }
-            if(mysql_num_rows($busca3) == 0){
+            if($busca3->rowCount() == 0){
                 header("Location: index.php?error=3");
                 exit;
             }
-            $linha_aluno = mysql_fetch_assoc($busca3);
+            $linha_aluno = $busca3->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 ?>
