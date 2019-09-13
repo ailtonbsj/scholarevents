@@ -79,7 +79,7 @@
                 }
             }
             $busca10 = $link1->query($sql10);
-            while ($linha10 = $busca10->fetchAll(PDO::FETCH_ASSOC)) {
+            foreach($busca10->fetchAll(PDO::FETCH_ASSOC) as $linha10) {
         ?>
         <tr>
             <td><?php echo $linha10['id'] ?></td>
