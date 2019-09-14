@@ -16,16 +16,16 @@ $fim = "$data $fim_d";
 
 //$sqlspacetime = "SELECT * FROM sch_espacotempo WHERE (id_local = '$local') AND (NOT(((momento_ini > '$inicio') AND (momento_ini > '$fim')) OR ((momento_fin < '$inicio') AND (momento_fin < '$fim'))))";
 $sqlspacetime = "SELECT sch_espacotempo.*,sch_locais.*,sch_acontecimentos.titulo FROM sch_espacotempo,sch_locais,sch_acontecimentos WHERE ((id_local = '$local') AND (id=id_local) AND (id_acontec=id_acon)) AND (NOT(((momento_ini > '$inicio') AND (momento_ini > '$fim')) OR ((momento_fin < '$inicio') AND (momento_fin < '$fim'))))";
-$buscaspacetime = mysql_query($sqlspacetime, $link1);
+$buscaspacetime = $link1->query($sqlspacetime);
 if(!$buscaspacetime){
     echo "ERROR_QUERY";
     exit;
 }
 
-if(mysql_num_rows($buscaspacetime) == 0){
+if($buscaspacetime->rowCount() == 0){
     $sql_insert = "INSERT INTO sch_espacotempo (id_local, momento_ini, momento_fin, id_acontec) VALUES ("
             . "'$local', '$inicio', '$fim', '$aconteci')";
-    $busca_insert = mysql_query($sql_insert, $link1);
+    $busca_insert = $link1->query($sql_insert);
     if(!$busca_insert){
         echo "ERROR_QUERY";
         exit;
@@ -34,7 +34,7 @@ if(mysql_num_rows($buscaspacetime) == 0){
 }
 else {
     echo "Choque de Horário com os eventos:<br /><br />";
-    while ($linha = mysql_fetch_assoc($buscaspacetime)){
+    foreach($buscaspacetime->fetchAll(PDO::FETCH_ASSOC) as $linha){
         echo $linha['titulo'] . "<br />(Inicio:" . $linha['momento_ini'] . " / Fim:" . $linha['momento_fin'] . ")";
         echo "<br />";
     }

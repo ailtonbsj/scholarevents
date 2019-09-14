@@ -15,14 +15,14 @@ else if($operacao == "DELETE"){
 else if($operacao == "QUERY"){
     $sql = "SELECT id_prof,nome,email FROM sch_professor_acontecimento, sch_usuarios WHERE (sch_professor_acontecimento.id_prof = sch_usuarios.id) AND (id_acon = $acontecimento)";
 }
-$busca = mysql_query($sql);
+$busca = $link1->query($sql);
 if(!$busca){
     echo "ERROR_QUERY";
     exit;
 }
 else if($operacao == "QUERY") {
     echo "SUCESS\"";
-    while ($row = mysql_fetch_assoc($busca)){
+    foreach($busca->fetchAll(PDO::FETCH_ASSOC) as $row){
         echo $row['id_prof'] . "'" . $row['nome'] . "'" . $row['email'];
         echo "\"";
     }

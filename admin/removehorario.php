@@ -9,7 +9,7 @@ $acontc = $_POST['acontc'];
 
 $sqldelete = "DELETE FROM sch_espacotempo WHERE (id_acontec='$acontc') AND (id_local='$idlocal') AND (momento_ini='$momento_ini') AND (momento_fin='$momento_fin')";
 
-$buscadelete = mysql_query($sqldelete,$link1);
+$buscadelete = $link1->query($sqldelete);
 
 if(!$buscadelete){
     echo "ERROR_QUERY";

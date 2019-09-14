@@ -28,7 +28,7 @@ function horaToWidth($inic,$fina){
     require './link1.php';
     
     $sqlhorario = "SELECT momento_ini,momento_fin,local,titulo FROM sch_espacotempo,sch_locais,sch_acontecimentos WHERE (id=id_local) AND (id_acon=id_acontec) ORDER BY momento_ini";
-    $buscahora = mysql_query($sqlhorario,$link1);
+    $buscahora = $link1->query($sqlhorario);
     if(!$buscahora){
         echo "ERRO";
         exit;
@@ -37,8 +37,8 @@ function horaToWidth($inic,$fina){
     $dataselect = "";
     $indice = 0;
     $idreg = 0;
-    if(mysql_num_rows($buscahora) != 0){
-    while($linha = mysql_fetch_assoc($buscahora)){
+    if($buscahora->rowCount() != 0){
+    foreach($buscahora->fetchAll(PDO::FETCH_ASSOC) as $linha){
         if(captadata($linha['momento_ini']) != $dataselect){
             $dataselect = captadata($linha['momento_ini']);
             $arrayData[$indice] = array($dataselect,null);
