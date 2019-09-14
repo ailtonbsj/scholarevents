@@ -1,22 +1,22 @@
 <?php
 
 $sqlWhatCert = "SELECT * FROM sch_images WHERE nome_img LIKE '%cer%'";
-$buscaWc = mysql_query($sqlWhatCert,$link1);
+$buscaWc = $link1->query($sqlWhatCert);
 if(!$buscaWc){
     echo "ERROR";
     exit;
 }
-$lnWc = mysql_fetch_assoc($buscaWc);
+$lnWc = $buscaWc->fetchAll(PDO::FETCH_ASSOC)[0];
 $certImg = $lnWc['nome_img'];
 
 $sqlCert = "SELECT * FROM sch_textos WHERE (id = 'cert0') OR (id = 'cert1') OR (id = 'cert2') OR (id = 'cert3') OR (id = 'cert4') OR (id = 'cert5') OR (id = 'cert6') OR (id = 'cert7')";
-$buscaCert = mysql_query($sqlCert,$link1);
+$buscaCert = $link1->query($sqlCert);
 if(!$buscaCert){
     echo "ERROR";
     exit;
 }
-while ($lnCert = mysql_fetch_assoc($buscaCert)){
-    $$lnCert['id'] = $lnCert['texto'];
+foreach($buscaCert->fetchAll(PDO::FETCH_ASSOC) as $lnCert){
+    ${$lnCert['id']} = $lnCert['texto'];
 }
 ?>
 <script type="text/javascript">

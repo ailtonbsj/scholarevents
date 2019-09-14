@@ -18,9 +18,9 @@ if(isset($_POST['user'])){
     }
     else{
         $sqlLogin = "SELECT * FROM sch_usuarios WHERE email = '$user' AND senha = '$password'";
-        $buscaLogIn = mysql_query($sqlLogin,$link1);
-        if(mysql_num_rows($buscaLogIn) == 1){
-            $lin = mysql_fetch_assoc($buscaLogIn);
+        $buscaLogIn = $link1->query($sqlLogin);
+        if($buscaLogIn->rowCount() == 1){
+            $lin = $buscaLogIn->fetchAll(PDO::FETCH_ASSOC)[0];
             $_SESSION['UserId'] = $lin['id'];
             $_SESSION['UserNome'] = $lin['nome'];
             $_SESSION['UserEmail'] = $lin['email'];
