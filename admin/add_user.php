@@ -46,7 +46,7 @@
                 header("Location: index.php?error=2");
                 exit;
             }
-            $linha_prof = $busca2->fetchAll(PDO::FETCH_ASSOC);
+            $linha_prof = $busca2->fetchAll(PDO::FETCH_ASSOC)[0];
         }
         if($tipos[3] == '1'){ //aluno
             $novo_aluno = false;
@@ -60,7 +60,7 @@
                 header("Location: index.php?error=3");
                 exit;
             }
-            $linha_aluno = $busca3->fetchAll(PDO::FETCH_ASSOC);
+            $linha_aluno = $busca3->fetchAll(PDO::FETCH_ASSOC)[0];
         }
     }
 ?>

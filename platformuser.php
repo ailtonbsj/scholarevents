@@ -12,8 +12,8 @@ if(!isset($_SESSION["UserId"])){
 
 $titulo_site = "";
 $sqlTexto = "SELECT * FROM sch_textos";
-$buscaTexto = mysql_query($sqlTexto,$link1);
-while($linhaTexto = mysql_fetch_assoc($buscaTexto)){
+$buscaTexto = $link1->query($sqlTexto);
+foreach($buscaTexto->fetchAll(PDO::FETCH_ASSOC) as $linhaTexto){
         switch ($linhaTexto['id']){
             case "titulo":
                 $titulo_site = $linhaTexto['texto'];
@@ -22,8 +22,8 @@ while($linhaTexto = mysql_fetch_assoc($buscaTexto)){
 }
 //Logo
 $sqlLogoPrincipal = "SELECT * FROM sch_images WHERE nome_img LIKE '%log%'";
-$buscaLogoPrincipal = mysql_query($sqlLogoPrincipal,$link1);
-$linhaLogoPrincipal = mysql_fetch_assoc($buscaLogoPrincipal);
+$buscaLogoPrincipal = $link1->query($sqlLogoPrincipal);
+$linhaLogoPrincipal = $buscaLogoPrincipal->fetchAll(PDO::FETCH_ASSOC)[0];
 $imgLogoPrincipal = $linhaLogoPrincipal['nome_img'];
 if(!(file_exists("images/" . $imgLogoPrincipal))){
     $imgLogoPrincipal = "logo.png";
@@ -32,8 +32,8 @@ if(!(file_exists("images/" . $imgLogoPrincipal))){
 $certAtive = '0';
 $datanow = date("Y-m-d H:i:s");
 $sqlEndEv = "SELECT * FROM sch_datas WHERE (label = 'Evento:Fim') AND (data < '$datanow')";
-$buscaEndEv = mysql_query($sqlEndEv,$link1);
-$totalRegs = mysql_num_rows($buscaEndEv);
+$buscaEndEv = $link1->query($sqlEndEv);
+$totalRegs = $buscaEndEv->rowCount();
 if($totalRegs == 1){
     $certAtive = '1';
 }
@@ -59,7 +59,7 @@ if($totalRegs == 1){
             var listacontecimento;
             var acontAllArray;
             var needToConfirm = true;
-            var fisthTime = true;
+            var fisthTime = false; // active area to change name on certification
             
             var stringRecebida;
             function callAjaxJson(type,id,callback){
@@ -595,12 +595,12 @@ if($totalRegs == 1){
 
                 if($typeStudent == '1'){
                     $sqlPlatform = "SELECT * FROM sch_subeventos";
-                    $queryPlatform = mysql_query($sqlPlatform, $link1);
+                    $queryPlatform = $link1->query($sqlPlatform);
                     if(!$queryPlatform){
                         echo 'Error!';
                         exit;
                     }
-                    while($linePlat = mysql_fetch_assoc($queryPlatform)){
+                    foreach($queryPlatform->fetchAll(PDO::FETCH_ASSOC) as $linePlat){
                         $logo = $linePlat['logo'];
                         $plataforma = $linePlat['plataforma'];
                         $idSubEvent = $linePlat['id'];

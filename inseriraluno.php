@@ -32,7 +32,7 @@ else{
     //consulta em usuario
     $sqlUsuario = "INSERT INTO sch_usuarios (id, nome, email, cpf, senha, celular, telefone, d_nascimento, tipo) VALUES ("
             . "'$id', '$nome', '$email', $cpf, '$senha', '$celular', $telefone, '$nascimento', '1')";
-    $buscausuario = mysql_query($sqlUsuario);
+    $buscausuario = $link1->query($sqlUsuario);
     if(!$buscausuario){
         header("Location: index.php?inscricao&error");
         exit;
@@ -40,7 +40,7 @@ else{
     //consulta em aluno
     $sqlAluno = "INSERT INTO sch_alunos (id, matricula, uf, cidade, bairro, endereco, email_ativo) VALUES ("
             . "'$id', $matricula, '$uf', '$cidade', '$bairro', '$endereco', 'F')";
-    $buscaAluno = mysql_query($sqlAluno);
+    $buscaAluno = $link1->query($sqlAluno);
     if(!$buscaAluno){
         header("Location: index.php?inscricao&error");
         exit;

@@ -2,9 +2,9 @@
 <div id="sobre_subevento">
 <?php
 $sqlDownloads = "SELECT sch_anexos.id_anexo, sch_anexos.descricao, sch_subeventos.titulo FROM sch_anexos,sch_subeventos WHERE sch_anexos.id_subev = sch_subeventos.id ORDER BY sch_subeventos.titulo";
-$buscaDownloads = mysql_query($sqlDownloads, $link1);
+$buscaDownloads = $link1->query($sqlDownloads);
 $titulo = '';
-while($lnDownloads = mysql_fetch_assoc($buscaDownloads)){
+foreach($buscaDownloads->fetchAll(PDO::FETCH_ASSOC) as $lnDownloads){
     if($titulo != $lnDownloads['titulo']){
         $titulo = $lnDownloads['titulo'];
         echo "<div class='titulos_download'>" . $titulo . '</div>';

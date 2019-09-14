@@ -53,8 +53,14 @@ $lnSubEv = $buscaSubevent->fetchAll(PDO::FETCH_ASSOC)[0];
 		echo "</td><td>";
 		$sqlMinis = "SELECT * FROM sch_professor_acontecimento,sch_usuarios WHERE id_prof = id AND id_acon = '$idAcon'";
         $buscaMinis = $link1->query($sqlMinis);
+        $firstItem = true;
 		foreach($buscaMinis->fetchAll(PDO::FETCH_ASSOC) as $linMinis){
-			echo $linMinis['nome'] . "<br />";
+            if($firstItem){
+                $firstItem = false;
+                echo $linMinis['nome'];
+            }
+            else
+			    echo ",<br />" . $linMinis['nome'];
 		}
         echo "</td></tr>";
     }
