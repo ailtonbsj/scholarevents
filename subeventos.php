@@ -1,8 +1,8 @@
 <?php
 $subevento = $_GET['subeventos'];
 $sqlSubeventos = "SELECT * FROM sch_subeventos WHERE id = '$subevento'";
-$buscaSubevent = mysql_query($sqlSubeventos, $link1);
-$lnSubEv = mysql_fetch_assoc($buscaSubevent);
+$buscaSubevent = $link1->query($sqlSubeventos);
+$lnSubEv = $buscaSubevent->fetchAll(PDO::FETCH_ASSOC)[0];
 ?>
 
 <div id="sobre_subevento">
@@ -16,12 +16,12 @@ $lnSubEv = mysql_fetch_assoc($buscaSubevent);
     <h1>Anexos</h1>
     <?php
     $sqlAnexos = "SELECT * FROM sch_anexos WHERE id_subev = '$subevento'";
-    $buscaAnexos = mysql_query($sqlAnexos, $link1);
+    $buscaAnexos = $link1->query($sqlAnexos);
     echo "<ul id='lista_anexos'>";
-    if(mysql_num_rows($buscaAnexos) == 0){
+    if($buscaAnexos->rowCount() == 0){
         echo "Não existe nenhum anexo!";
     }
-    while($lnAnexos = mysql_fetch_assoc($buscaAnexos)){
+    foreach($buscaAnexos->fetchAll(PDO::FETCH_ASSOC) as $lnAnexos){
         echo "<li><a href='anexos/". $lnAnexos['id_anexo'] ."'>". $lnAnexos['descricao'] ."</a></li>";
     }
     echo "</ul>";
@@ -30,18 +30,18 @@ $lnSubEv = mysql_fetch_assoc($buscaSubevent);
     <div id="lista_anexos">
     <?php
     $sqlListaAcon = "SELECT id_acon,titulo,descricao FROM sch_acontecimentos WHERE id_subevent = '$subevento'";
-    $buscaListAcon = mysql_query($sqlListaAcon);
+    $buscaListAcon = $link1->query($sqlListaAcon);
     echo "<table id='tb-menus'>";
     echo "<th width='160px'>Titulo</th><th>Descrição</th><th width='200px'>Horário</th><th>Ministrantes</th>";
-    while($lnListAcon = mysql_fetch_assoc($buscaListAcon)){
+    foreach($buscaListAcon->fetchAll(PDO::FETCH_ASSOC) as $lnListAcon){
         echo "<tr>";
         echo "<td>" . $lnListAcon['titulo']. "</td>";
         echo "<td>" . $lnListAcon['descricao']. "</td>";
         $idAcon = $lnListAcon['id_acon'];
         $sqlHr = "SELECT sch_espacotempo.momento_ini,sch_espacotempo.momento_fin,sch_locais.local FROM sch_espacotempo,sch_locais WHERE (sch_locais.id = sch_espacotempo.id_local) AND (id_acontec = '$idAcon') ORDER BY momento_ini ASC";
-        $buscaHr = mysql_query($sqlHr);
+        $buscaHr = $link1->query($sqlHr);
         echo "<td>";
-        while($lnhr = mysql_fetch_assoc($buscaHr)){
+        foreach($buscaHr->fetchAll(PDO::FETCH_ASSOC) as $lnhr){
              echo $lnhr['local'] . "<br />";
              $inic = explode(" ", $lnhr['momento_ini']);
              $dtini = explode("-", $inic[0]);
@@ -52,8 +52,8 @@ $lnSubEv = mysql_fetch_assoc($buscaSubevent);
         }
 		echo "</td><td>";
 		$sqlMinis = "SELECT * FROM sch_professor_acontecimento,sch_usuarios WHERE id_prof = id AND id_acon = '$idAcon'";
-		$buscaMinis = mysql_query($sqlMinis);
-		while($linMinis = mysql_fetch_assoc($buscaMinis)){
+        $buscaMinis = $link1->query($sqlMinis);
+		foreach($buscaMinis->fetchAll(PDO::FETCH_ASSOC) as $linMinis){
 			echo $linMinis['nome'] . "<br />";
 		}
         echo "</td></tr>";

@@ -16,7 +16,7 @@ if(!$buscaSubEvento){
     echo "erro4";
     exit;
 }
-while($linhaSubEvento = $buscaSubEvento->fetchAll(PDO::FETCH_ASSOC)){
+foreach($buscaSubEvento->fetchAll(PDO::FETCH_ASSOC) as $linhaSubEvento){
     echo "<a href=\"index.php?subeventos=". $linhaSubEvento['id'] ."\"><li>" . $linhaSubEvento['titulo'] . "</li></a>";
 }
 ?>
