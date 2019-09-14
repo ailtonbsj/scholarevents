@@ -5,10 +5,10 @@ require '../link1.php';
 $sql_profe = "SELECT * FROM sch_usuarios WHERE tipo >= 8";
 $sql_local = "SELECT * FROM sch_locais";
 if($_POST['tipo'] == 'professor'){
-    $busca = mysql_query($sql_profe);
+    $busca = $link1->query($sql_profe);
 }
 else if($_POST['tipo'] == 'local'){
-    $busca = mysql_query($sql_local);
+    $busca = $link1->query($sql_local);
 }
 
 if(!$busca){
@@ -16,7 +16,7 @@ if(!$busca){
     exit;
 }
 echo "SUCESS\"";
-while($linha = mysql_fetch_assoc($busca)){
+foreach($busca->fetchAll(PDO::FETCH_ASSOC) as $linha){
     if($_POST['tipo'] == 'professor'){
         echo $linha['id'] . "'" . $linha['nome'] . "'" . $linha['email'];
         echo"\""; 

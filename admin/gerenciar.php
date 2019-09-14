@@ -11,8 +11,8 @@ function captaData($capd){
 $EvIni;
 $EvFim;
 $sqldt = "SELECT * FROM sch_datas WHERE label = 'Evento:Inicio' OR label = 'Evento:Fim'";
-$busca = mysql_query($sqldt);
-while ($linhadt = mysql_fetch_assoc($busca)){
+$busca = $link1->query($sqldt);
+foreach($busca->fetchAll(PDO::FETCH_ASSOC) as $linhadt){
     switch ($linhadt['label']){
         case "Evento:Inicio":
             $EvIni = captaData($linhadt['data']);

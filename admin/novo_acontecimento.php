@@ -9,7 +9,7 @@ if(isset($_POST["id"])){
     $descricao = $_POST["descricao"];
     $totalvagas = $_POST["totalvagas"];
     $pago = ($_POST["pago"] == 'true') ? "T": "F";
-    if(($subevent == "") or ($titulo == "") or ($descricao == "") or ($totalvagas == "") or (@ ereg('[^0-9]',$totalvagas)?true:false)){
+    if(($subevent == "") or ($titulo == "") or ($descricao == "") or ($totalvagas == "") or (@ preg_match('[^0-9]',$totalvagas)?true:false)){
         echo "INVALID_FIELDS";
         exit;
     }
@@ -23,7 +23,7 @@ if(isset($_POST["id"])){
                 . "titulo = '$titulo', vagas_total = '$totalvagas', descricao = '$descricao', pago = '$pago' WHERE sch_acontecimentos.id_acon = '$id';";
         $sucesso = "SUCESS_UPDATE";
     }
-    $buscaInsert = mysql_query($sql);
+    $buscaInsert = $link1->query($sql);
     if(!$buscaInsert){
         echo "ERROR_INSERT";
         exit;
