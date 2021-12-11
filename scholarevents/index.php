@@ -7,7 +7,7 @@ if(isset($_POST['host'])){
     $senha = $_POST['senha'];
     $db = $_POST['database'];
     
-    $link1 = new PDO("mysql:host={$host};port=3307;dbname={$db};charset=utf8", $user, $senha);
+    $link1 = new PDO("mysql:host={$host};port=3306;dbname={$db};charset=utf8", $user, $senha);
     $link1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if($link1){
              
@@ -240,7 +240,7 @@ for ($i = 0; $i <= 25; $i++) {
     }
 }
 
-$textLink1 = "\$link1 = new PDO(\"mysql:host={$host};port=3307;dbname={$db};charset=utf8\", '$user', '$senha');\n";
+$textLink1 = "\$link1 = new PDO(\"mysql:host={$host};port=3306;dbname={$db};charset=utf8\", '$user', '$senha');\n";
 $textLink1.= "\$link1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);";
 
 $arqLink1 = @ fopen("link1.php", "w");
