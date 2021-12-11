@@ -75,6 +75,8 @@ senha: admin
 sudo docker-compose up -d --build
 ```
 
+Espere alguns minutos até o deploy automático finalizar.
+
 ## Telas
 
 ![tela1](https://ailtonbsj.files.wordpress.com/2017/01/01.png?w=395&h=316)
