@@ -116,7 +116,7 @@ foreach($buscaSubEvento->fetchAll(PDO::FETCH_ASSOC) as $linhaSubEvento){
 <div style="clear: both;"></div>
 <div>
 	<div id="sobre_evento">
-		<h1>Sobre o Evento</h1>
+		<h1>Sobre</h1>
                 <?php echo $sobre_event ?>
 	</div>
 	<div id="area_html_1"><?php echo $html1 ?></div>

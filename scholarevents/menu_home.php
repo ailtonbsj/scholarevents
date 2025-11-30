@@ -6,7 +6,7 @@ $buscaMenuMais = $link1->query($sqlMenuMais);
 <div id="menu_main">
 	<ul>
             <a href="index.php"><li>Inicio</li></a>
-		<li>O evento
+		<li>Sobre
 			<ul>
 <?php
 require 'link1.php';

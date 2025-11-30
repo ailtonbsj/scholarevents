@@ -1,5 +1,7 @@
 <?php
 
+setlocale(LC_TIME, 'pt_BR.UTF-8');
+
 if (!isset($_SESSION)) {
   session_start();
 }
@@ -55,7 +57,10 @@ function horaToWidth($inic,$fina){
     for($v=0;$v<count($arrayData);$v++){
     
     echo "<div style='padding:5px;margin:2px;background-color:". $_SESSION['cor1'] .";'>";
-    echo "<div style='font-weight: bold;'>Data: ". $arrayData[$v][0] ."</div>";
+    $dateString = $arrayData[$v][0];
+    $dateObj = DateTime::createFromFormat('Y-m-d', $dateString);
+    $dayString = ucfirst(strftime('%A', $dateObj->getTimestamp()));
+    echo "<div style='font-weight: bold;'>Data: ". $dateString ." (" . $dayString . ")</div>";
 ?>
 <div style="background-color: <?php echo $_SESSION['cor2'] ?>; padding: 5px; position: relative">
     <div style="font-weight: bold;">Locais</div>
